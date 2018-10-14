@@ -6,7 +6,11 @@ namespace IR
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Hello World!");
+            Console.WriteLine($"init.. {DateTime.Now}");
+
+            StopList stopList = new StopList(@"assets\StopList.txt");
+            
+
         }
     }
 }
