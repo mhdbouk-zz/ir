@@ -53,9 +53,13 @@ namespace IR
 
             var documentStpWords = _documentWords.Where(x => !stopList.StopWords.Any(s => s == x)).ToList();
 
-            await File.WriteAllLinesAsync($"assets\\stp\\{_fileNameWithoutExtension}{AppConstant.StpExtension}", documentStpWords.ToArray());
+            await File.WriteAllLinesAsync($"{AppConstant.StpDirectory}\\{_fileNameWithoutExtension}{AppConstant.StpExtension}", documentStpWords.ToArray());
         }
 
+        /// <summary>
+        /// Check if stopList is not null, if null then throw exception
+        /// </summary>
+        /// <param name="stopList">Instance of stopList to check</param>
         private void IsStopListValid(StopList stopList)
         {
             if (stopList == null)

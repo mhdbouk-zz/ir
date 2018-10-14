@@ -24,6 +24,8 @@ namespace IR
             });
 
             Task.WaitAll(tasks.ToArray());
+
+            Console.WriteLine($"Done, please check files {DateTime.Now}");
         }
     }
 }
