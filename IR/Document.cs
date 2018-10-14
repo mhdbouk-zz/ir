@@ -12,7 +12,6 @@ namespace IR
         private readonly string _documentPath;
         private readonly string _fileNameWithoutExtension;
         private List<string> _documentWords;
-        private List<string> _documentStpWords;
         /// <summary>
         /// Create new instance of Document. We will use this document to apply the project steps on it
         /// </summary>
@@ -20,23 +19,41 @@ namespace IR
         public Document(string path)
         {
             _documentPath = path;
-            _documentWords = File.ReadAllText(path).Split(AppConstant.GetDelimiters(), StringSplitOptions.RemoveEmptyEntries).ToList();
             _fileNameWithoutExtension = Path.GetFileNameWithoutExtension(path);
+            PrepareDocument();
         }
+        /// <summary>
+        /// Read all the text from the _documentPath and save them after remove all delimiters into list of _documentWords
+        /// </summary>
+        private void PrepareDocument()
+        {
+            string document = File.ReadAllText(_documentPath);
 
+            if (string.IsNullOrWhiteSpace(document))
+            {
+                return;
+            }
+
+            _documentWords = document
+                                // Trim on all delimiters and remove empty entries
+                                .Split(AppConstant.GetDelimiters(), StringSplitOptions.RemoveEmptyEntries)
+                                // Trim each word with the Delimiters for Trim list
+                                .Select(x => x.Trim(AppConstant.GetDelimitersForTrim()))
+                                .Where(x => !x.IsInteger())
+                                .ToList();
+        }
+        /// <summary>
+        /// Generate The document stp list and save it to disk with extension .stp
+        /// </summary>
+        /// <param name="stopList">Instance of existing stopList that has the stop words</param>
+        /// <returns></returns>
         public async Task GenerateStopListAsync(StopList stopList)
         {
             IsStopListValid(stopList);
 
-            _documentStpWords = _documentWords.Where(x => !stopList.StopWords.Any(s => s == x)).ToList();
-            _documentStpWords.ForEach(x =>
-            {
-                AppConstant.GetDelimiters().ToList().ForEach(d =>
-                {
-                    x = x.Replace(d, "");
-                });
-            });
-            await File.WriteAllLinesAsync($"assets\\stp\\{_fileNameWithoutExtension}{AppConstant.StpExtension}", _documentStpWords.ToArray());
+            var documentStpWords = _documentWords.Where(x => !stopList.StopWords.Any(s => s == x)).ToList();
+
+            await File.WriteAllLinesAsync($"assets\\stp\\{_fileNameWithoutExtension}{AppConstant.StpExtension}", documentStpWords.ToArray());
         }
 
         private void IsStopListValid(StopList stopList)

@@ -1,3 +1,5 @@
-﻿Other institutions with ties to Saudi Arabia, like the lobbying firm Harbour Group and the Brookings Institution, have also terminated their relationships.
+Facebook first found hints of suspicious activity across its network in early September when security engineers noticed a flurry of activity around the “View As” feature, a way for users to check on what information other people can see about them. It was built to give users move control over their privacy.
 
-“Mohammed bin Salman tried very hard over more than three and a half years to fashion an image of himself as a reformer and even a revolutionary,” said Bruce O. Riedel, an expert on Saudi Arabia at Brookings. “Now that veil has been torn apart.”
+More than a week later, Facebook determined that the activity was an attack on its systems, focused on three interconnected vulnerabilities in the company’s software.
+
+Those flaws were compounded by a bug in Facebook’s video-uploading program for birthday celebrations, a software feature that was introduced in July 2017. The flaw allowed the attackers to steal so-called access tokens — digital keys that allow access to an account.

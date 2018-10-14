@@ -1,3 +1,5 @@
-﻿“There will still be a lot of serious people in Riyadh,” said Jon B. Alterman, director of the Middle East Program at the Center for Strategic and International Studies. “Investors are going to be interested in Saudi Arabia for a long time to come,” he said, pointing to its extraordinary wealth and the fact that oil prices are above $80 a barrel.
+Still, some wonder if his self-funded operation, isolated from the rigors of academic interaction, is a quixotic adventure. They have been researching the brain one little piece at a time for a good reason: Piecing how it all works together is a monumental, hard-to-fathom task.
 
-Treasury Secretary Steven Mnuchin is also still scheduled to represent the Trump administration, though on Friday, Mr. Trump told reporters that he might reconsider that decision. He said he planned to call King Salman to press him for answers about Mr. Khashoggi.
+“It is clear we need a better understanding of intelligence,” said Tomaso Poggio, a neuroscientist at the Massachusetts Institute of Technology who introduced Mr. Hawkins and Mr. Hassabis. “But Jeff is doing this the hard way.”
+
+If Mr. Hawkins’s work should pan out, it could help A.I. researchers leapfrog over what exists today. In recent years, the likes of Google, Apple and Amazon have built cars that drive on their own, gadgets that answer questions from across the room and smartphone apps that instantly translate languages.

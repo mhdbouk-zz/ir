@@ -21,6 +21,15 @@ namespace IR
             return delimiters;
         }
 
+        private static readonly char[] delimitersForTrim = new char[]{ '\t', ';', '.','|', '@','[',']',':',
+                                            '\'','?', '<','>' ,',','\\','!','#','%','^','*',' ',
+                                            '(',')','-','_','+','=','{','}',':','“', '”', '—'};
+
+        public static char[] GetDelimitersForTrim()
+        {
+            return delimitersForTrim;
+        }
+
         public const string StpDirectory = @"assets\stp";
     }
 }

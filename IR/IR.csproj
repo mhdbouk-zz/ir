@@ -71,8 +71,4 @@
     </None>
   </ItemGroup>
 
-  <ItemGroup>
-    <Folder Include="assets\documents\" />
-  </ItemGroup>
-
 </Project>

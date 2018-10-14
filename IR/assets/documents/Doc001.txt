@@ -1,7 +1,5 @@
-WASHINGTON ó The participants nicknamed it ìDavos in the Desert,î which captures the lofty ambitions of the annual investor conference scheduled to convene in Riyadh, Saudi Arabia, this month.
+SAN FRANCISCO ‚Äî Facebook said Friday that an attack on its computer systems that was announced two weeks ago had affected 30 million users, about 20 million fewer than it estimated earlier.
 
-Initially planned as an intimate gathering, it grew quickly in size and scope, and the inaugural meeting last year reflected the determination of its host, Crown Prince Mohammed bin Salman, to be a player on the world stage.
+But the personal information that was exposed was far more intimate than originally thought, adding to Facebook‚Äôs challenges as it investigates what was probably the most substantial breach of its network in the company‚Äôs 14-year history.
 
-In keeping with Muslim practice, no alcohol was served. Waiters roamed the vast, opulent Ritz-Carlton Hotel, offering pale Saudi coffee and exotic fruit drinks. Outside the hotel, female executives kept their arms and legs covered. But the gathering was an extravagant embodiment of Crown Prince Mohammedís dream to modernize Saudi Arabia and wean it off its reliance on oil by 2030.
-
-Speaking on stage to the Fox Business Network anchor Maria Bartiromo, the prince said Saudi Arabia ìand all of its projects and programs can reach new horizons in the world.î Then he presented his blueprint for Neom, a $500 billion planned city that would rise from the sands ó a futuristic Xanadu of high-tech jobs and robot workers.
+Detailed information was stolen from the Facebook profiles of about 14 million of the 30 million users. The data was as specific as the last 15 people or things they had searched for on Facebook and the last 10 physical locations they had ‚Äúchecked into.‚Äù
