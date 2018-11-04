@@ -20,12 +20,23 @@ namespace IR
 
             documents.ForEach(x =>
             {
-                tasks.Add(x.GenerateStopListAsync(stopList));
+                tasks.Add(x.GenerateStpFileAsync(stopList));
             });
 
             Task.WaitAll(tasks.ToArray());
 
-            Console.WriteLine($"Done, please check files {DateTime.Now}");
+            Console.WriteLine($"Done Phase 1 - StopWords removal., please check files {DateTime.Now}");
+
+            tasks = new List<Task>();
+
+            documents.ForEach(x =>
+            {
+                tasks.Add(x.GenerateStemmedFileAsync());
+            });
+
+            Task.WaitAll(tasks.ToArray());
+
+            Console.WriteLine($"Done Phase 2 - Suffix removal., please check files {DateTime.Now}");
         }
     }
 }

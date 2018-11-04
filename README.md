@@ -13,4 +13,4 @@ useful because they work mainly as complements. These irrelevant terms (stopword
 The remaining terms are stemmed using Porter's algorithm, it brings down distinct words to their common grammatical root - Remove suffix. Stemming will reduces further the number of unique terms.
 - Removal of suffixes
 - Generate text documents without suffixes `.sfx`
-- Using porter algorithm
+- Using porter algorithm (https://github.com/nemec/porter2-stemmer)
