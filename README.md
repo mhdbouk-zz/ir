@@ -3,7 +3,7 @@
 
 ## Phase 1: Stoplist
 Adjectives, adverbs, and connectives are less
-useful because they work mainly as complements. These irrelevant terms (stopwords) are placed un a file called Stoplist (`"assets/StopLost.txt"`).
+useful because they work mainly as complements. These irrelevant terms (stopwords) are placed under a file called Stoplist (`"assets/StopLost.txt"`).
 
 - Removal of the words found in a stoplist
 - Removal of punctuations and symbols
