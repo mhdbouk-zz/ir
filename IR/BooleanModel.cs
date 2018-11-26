@@ -51,6 +51,7 @@ namespace IR
             sb.AppendLine(rowsStringBuilder.ToString());
 
             File.WriteAllText(AppConstant.BooleanInvertedFile, sb.ToString());
+            return result;
         }
     }
 }
