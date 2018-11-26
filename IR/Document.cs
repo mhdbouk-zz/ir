@@ -14,13 +14,15 @@ namespace IR
         private string _sfxFile => $"{AppConstant.SfxDirectory}\\{_fileNameWithoutExtension}{AppConstant.SfxExtension}";
         private List<string> _documentWords;
         private List<string> _documentStpWords;
+        private readonly DocumentTerms _terms;
         /// <summary>
         /// Create new instance of Document. We will use this document to apply the project steps on it
         /// </summary>
         /// <param name="path">Path of the document on disk</param>
-        public Document(string path)
+        public Document(string path, DocumentTerms terms)
         {
             _documentPath = path;
+            _terms = terms;
             _fileNameWithoutExtension = Path.GetFileNameWithoutExtension(path);
             PrepareDocument();
         }
@@ -80,6 +82,9 @@ namespace IR
             }
 
             List<string> stemmedTerms = _documentStpWords.Select(term => Porter2Stemmer.EnglishPorter2Stemmer.Instance.Stem(term).Value).Distinct().ToList();
+
+            // Add terms into DocumentTerms
+            stemmedTerms.ForEach(x => _terms.Add(x));
 
             await File.WriteAllLinesAsync($"{_sfxFile}", stemmedTerms.ToArray());
 
