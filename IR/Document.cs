@@ -9,11 +9,12 @@ namespace IR
     public class Document
     {
         private readonly string _documentPath;
-        private readonly string _fileNameWithoutExtension;
-        private string _stpFile => $"{AppConstant.StpDirectory}\\{_fileNameWithoutExtension}{AppConstant.StpExtension}";
-        private string _sfxFile => $"{AppConstant.SfxDirectory}\\{_fileNameWithoutExtension}{AppConstant.SfxExtension}";
+        public string FileNameWithoutExtension { get; private set; }
+        private string _stpFile => $"{AppConstant.StpDirectory}\\{FileNameWithoutExtension}{AppConstant.StpExtension}";
+        private string _sfxFile => $"{AppConstant.SfxDirectory}\\{FileNameWithoutExtension}{AppConstant.SfxExtension}";
         private List<string> _documentWords;
         private List<string> _documentStpWords;
+        public List<string> StemmedTerms { get; private set; }
         private readonly DocumentTerms _terms;
         /// <summary>
         /// Create new instance of Document. We will use this document to apply the project steps on it
@@ -23,7 +24,7 @@ namespace IR
         {
             _documentPath = path;
             _terms = terms;
-            _fileNameWithoutExtension = Path.GetFileNameWithoutExtension(path);
+            FileNameWithoutExtension = Path.GetFileNameWithoutExtension(path);
             PrepareDocument();
         }
         /// <summary>
@@ -81,13 +82,22 @@ namespace IR
                 return;
             }
 
-            List<string> stemmedTerms = _documentStpWords.Select(term => Porter2Stemmer.EnglishPorter2Stemmer.Instance.Stem(term).Value).Distinct().ToList();
+            StemmedTerms = _documentStpWords.Select(term => Porter2Stemmer.EnglishPorter2Stemmer.Instance.Stem(term).Value).Distinct().ToList();
 
             // Add terms into DocumentTerms
-            stemmedTerms.ForEach(x => _terms.Add(x));
+            StemmedTerms.ForEach(x => _terms.Add(x));
 
-            await File.WriteAllLinesAsync($"{_sfxFile}", stemmedTerms.ToArray());
+            await File.WriteAllLinesAsync($"{_sfxFile}", StemmedTerms.ToArray());
+        }
 
+        /// <summary>
+        /// Check if term exist in the document. return <see langword="true"/> if <paramref name="term"/> exist in the list of stemmed document terms
+        /// </summary>
+        /// <param name="term">The term looking for</param>
+        /// <returns></returns>
+        public bool IsTermExist(string term)
+        {
+            return StemmedTerms != null && StemmedTerms.Contains(term, StringComparer.OrdinalIgnoreCase);
         }
     }
 }

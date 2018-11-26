@@ -9,6 +9,9 @@
         public const string SfxExtension = ".sfx";
         public const string StpDirectory = @"assets\stp";
         public const string SfxDirectory = @"assets\sfx";
+        public const string BooleanInvertedFile = @"assets\boolean-inverted-file.csv";
+        public const string VectorInvertedFile = @"assets\vector-inverted-file.csv";
+        public const string CsvDelimiter = ",";
 
         private static readonly string[] delimiters = new string[]{ "\r\n",".\r\n", ".\r", "\t", ";" , " & ",
                                             " ^ ",". "," | "," @","@ "," @ "," [ "," ] "," : ",": "," :",

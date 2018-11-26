@@ -40,8 +40,11 @@ namespace IR
 
             Console.WriteLine($"Done Phase 2 - Suffix removal., please check files {DateTime.Now}");
 
-            // 1. Get all terms
-            // 2. Compute using Binary
+            BooleanModel booleanModel = new BooleanModel(terms, documents);
+            var booleanInvertedFile = booleanModel.GenerateInvertedFile();
+
+            VectorModel vectorModel = new VectorModel(terms, documents);
+            vectorModel.GenerateInvertedFile(booleanInvertedFile);
             // 3. Computer using TFIDF
         }
     }
