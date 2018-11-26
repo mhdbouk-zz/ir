@@ -82,12 +82,12 @@ namespace IR
                 return;
             }
 
-            StemmedTerms = _documentStpWords.Select(term => Porter2Stemmer.EnglishPorter2Stemmer.Instance.Stem(term).Value).Distinct().ToList();
+            StemmedTerms = _documentStpWords.Select(term => Porter2Stemmer.EnglishPorter2Stemmer.Instance.Stem(term).Value).ToList();
 
             // Add terms into DocumentTerms
             StemmedTerms.ForEach(x => _terms.Add(x));
 
-            await File.WriteAllLinesAsync($"{_sfxFile}", StemmedTerms.ToArray());
+            await File.WriteAllLinesAsync($"{_sfxFile}", StemmedTerms.Distinct().ToArray());
         }
 
         /// <summary>
@@ -98,6 +98,15 @@ namespace IR
         public bool IsTermExist(string term)
         {
             return StemmedTerms != null && StemmedTerms.Contains(term, StringComparer.OrdinalIgnoreCase);
+        }
+        /// <summary>
+        /// Get the count of term in document.
+        /// </summary>
+        /// <param name="term"></param>
+        /// <returns></returns>
+        public int Count(string term)
+        {
+            return StemmedTerms.Count(x => x == term);
         }
     }
 }
