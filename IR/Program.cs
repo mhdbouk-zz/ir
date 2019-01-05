@@ -54,7 +54,7 @@ namespace IR
             Task.WaitAll(queryDocument.GenerateStemmedFileAsync());
 
 
-            model.SubmitQuery(queryDocument);
+            model.SubmitQuery(queryDocument, query);
         }
     }
 }
