@@ -4,7 +4,7 @@
     {
         public const string StopListPath = @"assets\StopList.txt";
         public const string DocumentDirectory = @"assets\documents";
-        public const string DocumentExtension = ".txt";
+        public const string DocumentExtension = ".TXT";
         public const string StpExtension = ".stp";
         public const string SfxExtension = ".sfx";
         public const string StpDirectory = @"assets\stp";
