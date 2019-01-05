@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using System.Text;
 using System.Threading.Tasks;
 
 namespace IR
@@ -18,6 +19,9 @@ namespace IR
         public List<string> StemmedTerms { get; private set; }
         private readonly DocumentTerms _terms;
         public double CosValue { get; set; }
+        public List<InvertedValue> InvertedValues { get; internal set; }
+        public StringBuilder RowsStringBuilder { get; internal set; } = new StringBuilder();
+
         /// <summary>
         /// Create new instance of Document. We will use this document to apply the project steps on it
         /// </summary>

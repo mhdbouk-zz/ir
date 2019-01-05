@@ -10,4 +10,10 @@
         public double TFIDF { get; set; }
         public double QueryTFIDF { get; set; }
     }
+
+    public class TermDocumentFrequency
+    {
+        public string Term { get; set; }
+        public int DocumentFrequency { get; set; }
+    }
 }
