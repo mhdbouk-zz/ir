@@ -159,9 +159,10 @@ namespace IR
             sb.AppendLine($"Query: " + queryString);
             sb.AppendLine();
             sb.AppendLine($"DOC{AppConstant.CsvDelimiter}COS");
-            foreach (var document in _documents)
+            List<(string fileName, double cosValue)> list = _documents.OrderByDescending(x => x.CosValue).Select(x => (x.FileNameWithoutExtension, x.CosValue)).ToList();
+            foreach (var (fileName, cosValue) in list)
             {
-                sb.AppendLine($"{document.FileNameWithoutExtension}{AppConstant.CsvDelimiter}{document.CosValue}");
+                sb.AppendLine($"{fileName}{AppConstant.CsvDelimiter}{cosValue}");
             }
             File.WriteAllText(AppConstant.QueryCosFile, sb.ToString());
         }

@@ -41,8 +41,12 @@ namespace IR
             Console.WriteLine($"Done Phase 2 - Suffix removal, please check generated files {DateTime.Now}");
 
             InvertedModel model = new InvertedModel(terms, documents);
+            Console.WriteLine($"Start Generating Boolean Inverted File {DateTime.Now}");
             model.GenerateInvertedFile();
+            Console.WriteLine($"Done Generating Boolean Inverted File {DateTime.Now}");
+            Console.WriteLine($"Start Generating TFIDF Inverted File {DateTime.Now}");
             model.GenerateTFIDFValuesFile();
+            Console.WriteLine($"Done Generating TFIDF Inverted File {DateTime.Now}");
 
             Console.WriteLine($"Done Phase 3 - Generate Inverted File (Boolean & TFIDF), please check generated files {DateTime.Now}");
 
