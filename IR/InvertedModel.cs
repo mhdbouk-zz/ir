@@ -165,7 +165,6 @@ namespace IR
                 tasks.Add(Task.Factory.StartNew(() =>
                 {
                     GenerateCosForOneDocument(document, query);
-                    Console.WriteLine(document.FileNameWithoutExtension);
                 }));
             }
 
