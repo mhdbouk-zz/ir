@@ -56,7 +56,7 @@ namespace IR
             Console.WriteLine("Choose one of the following options:");
             Console.WriteLine("1. Run MEDIAN Test Collection (will generate COS & Precision and Recall");
             Console.WriteLine("2. Run custom query search (will generate COS)");
-            Console.WriteLine("3. Exist");
+            Console.WriteLine("3. Exit");
 
             string optionStr = Console.ReadLine();
             int.TryParse(optionStr, out int option);
