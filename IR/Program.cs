@@ -40,11 +40,21 @@ namespace IR
 
             Console.WriteLine($"Done Phase 2 - Suffix removal, please check generated files {DateTime.Now}");
 
-            BooleanModel booleanModel = new BooleanModel(terms, documents);
-            booleanModel.GenerateInvertedFile();
-            booleanModel.GenerateTFIDFValuesFile();
+            InvertedModel model = new InvertedModel(terms, documents);
+            model.GenerateInvertedFile();
+            model.GenerateTFIDFValuesFile();
 
             Console.WriteLine($"Done Phase 3 - Generate Inverted File (Boolean & TFIDF), please check generated files {DateTime.Now}");
+
+            Console.Write("Enter Query: ");
+            string query = Console.ReadLine();
+
+            Document queryDocument = new Document(terms, query);
+            Task.WaitAll(queryDocument.GenerateStpFileAsync(stopList));
+            Task.WaitAll(queryDocument.GenerateStemmedFileAsync());
+
+
+            model.SubmitQuery(queryDocument);
         }
     }
 }

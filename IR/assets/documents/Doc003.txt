@@ -1,5 +1,1 @@
-The meeting, set for April at DeepMind’s offices in London, never happened. DeepMind employs hundreds of A.I. researchers along with a team of seasoned neuroscientists. But when Mr. Hawkins chatted with Demis Hassabis, one of the founders of DeepMind, before his visit, they agreed that almost no one at the London lab would understand his work.
-
-Mr. Hawkins says that before the world can build artificial intelligence, it must explain human intelligence so it can create machines that genuinely work like the brain. “You do not have to emulate the entire brain,” he said. “But you do have to understand how the brain works and emulate the important parts.”
-
-At his company, called Numenta, that is what he hopes to do. Mr. Hawkins, 61, began his career as an engineer, created two classic mobile computer companies, Palm and Handspring, and taught himself neuroscience along the way.
+﻿dog house cup

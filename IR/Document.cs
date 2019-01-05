@@ -9,6 +9,7 @@ namespace IR
     public class Document
     {
         private readonly string _documentPath;
+        private readonly string _query;
         public string FileNameWithoutExtension { get; private set; }
         private string _stpFile => $"{AppConstant.StpDirectory}\\{FileNameWithoutExtension}{AppConstant.StpExtension}";
         private string _sfxFile => $"{AppConstant.SfxDirectory}\\{FileNameWithoutExtension}{AppConstant.SfxExtension}";
@@ -16,10 +17,12 @@ namespace IR
         private List<string> _documentStpWords;
         public List<string> StemmedTerms { get; private set; }
         private readonly DocumentTerms _terms;
+        public double CosValue { get; set; }
         /// <summary>
         /// Create new instance of Document. We will use this document to apply the project steps on it
         /// </summary>
         /// <param name="path">Path of the document on disk</param>
+        /// <param name="terms">Existing document terms</param>
         public Document(string path, DocumentTerms terms)
         {
             _documentPath = path;
@@ -28,12 +31,35 @@ namespace IR
             PrepareDocument();
         }
         /// <summary>
+        /// Create new instance of Document when the user submit a query
+        /// </summary>
+        /// <param name="terms">Existing document terms</param>
+        /// <param name="query">The user query submited to the system</param>
+        public Document(DocumentTerms terms, string query)
+        {
+            _terms = terms;
+            _query = query;
+            FileNameWithoutExtension = "UserQuery";
+            PrepareQueryDocument();
+        }
+
+        private void PrepareQueryDocument()
+        {
+            ApplyForDocument(_query);
+        }
+
+        /// <summary>
         /// Read all the text from the _documentPath and save them after remove all delimiters into list of _documentWords
         /// </summary>
         private void PrepareDocument()
         {
             string document = File.ReadAllText(_documentPath);
 
+            ApplyForDocument(document);
+        }
+
+        private void ApplyForDocument(string document)
+        {
             if (string.IsNullOrWhiteSpace(document))
             {
                 return;
@@ -47,6 +73,7 @@ namespace IR
                                 .Where(x => !x.IsInteger())
                                 .ToList();
         }
+
         /// <summary>
         /// Generate The document stp list and save it to disk with extension .stp
         /// </summary>

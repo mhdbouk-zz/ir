@@ -8,5 +8,6 @@
         public int DocumentFrequency { get; set; }
         public int TermFrequency { get; set; }
         public double TFIDF { get; set; }
+        public double QueryTFIDF { get; set; }
     }
 }

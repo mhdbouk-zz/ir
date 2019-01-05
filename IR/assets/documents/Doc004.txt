@@ -1,5 +1,4 @@
-Facebook first found hints of suspicious activity across its network in early September when security engineers noticed a flurry of activity around the “View As” feature, a way for users to check on what information other people can see about them. It was built to give users move control over their privacy.
-
-More than a week later, Facebook determined that the activity was an attack on its systems, focused on three interconnected vulnerabilities in the company’s software.
-
-Those flaws were compounded by a bug in Facebook’s video-uploading program for birthday celebrations, a software feature that was introduced in July 2017. The flaw allowed the attackers to steal so-called access tokens — digital keys that allow access to an account.
+﻿pen
+house
+horse
+tv tv
