@@ -16,4 +16,17 @@
         public string Term { get; set; }
         public int DocumentFrequency { get; set; }
     }
+
+    public class RelevantDocument
+    {
+        public int QueryId { get; set; }
+        public int DocumentId { get; set; }
+    }
+
+    public class Query
+    {
+        public int Id { get; set; }
+        public string FileName { get; set; }
+        public string Content { get; set; }
+    }
 }

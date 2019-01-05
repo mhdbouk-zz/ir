@@ -3,14 +3,16 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 
 namespace IR
 {
     public class Document
     {
+        public int Id => int.Parse(Regex.Replace(FileNameWithoutExtension, "[^0-9.]", ""));
         private readonly string _documentPath;
-        private readonly string _query;
+        public string Query { get; set; }
         public string FileNameWithoutExtension { get; private set; }
         private string _stpFile => $"{AppConstant.StpDirectory}\\{FileNameWithoutExtension}{AppConstant.StpExtension}";
         private string _sfxFile => $"{AppConstant.SfxDirectory}\\{FileNameWithoutExtension}{AppConstant.SfxExtension}";
@@ -19,9 +21,9 @@ namespace IR
         public List<string> StemmedTerms { get; private set; }
         private readonly DocumentTerms _terms;
         public double CosValue { get; set; }
+        public bool Relevant { get; set; }
         public List<InvertedValue> InvertedValues { get; internal set; }
         public StringBuilder RowsStringBuilder { get; internal set; } = new StringBuilder();
-
         /// <summary>
         /// Create new instance of Document. We will use this document to apply the project steps on it
         /// </summary>
@@ -42,14 +44,14 @@ namespace IR
         public Document(DocumentTerms terms, string query)
         {
             _terms = terms;
-            _query = query;
+            Query = query;
             FileNameWithoutExtension = "UserQuery";
             PrepareQueryDocument();
         }
 
         private void PrepareQueryDocument()
         {
-            ApplyForDocument(_query);
+            ApplyForDocument(Query);
         }
 
         /// <summary>
@@ -58,7 +60,7 @@ namespace IR
         private void PrepareDocument()
         {
             string document = File.ReadAllText(_documentPath);
-
+            Query = document;
             ApplyForDocument(document);
         }
 
@@ -138,6 +140,11 @@ namespace IR
         public int Count(string term)
         {
             return StemmedTerms.Count(x => x == term);
+        }
+
+        public override string ToString()
+        {
+            return $"Id: {Id}, Name: {FileNameWithoutExtension}, Cos: {CosValue}, Relevant: {Relevant}";
         }
     }
 }
