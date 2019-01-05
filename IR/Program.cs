@@ -54,10 +54,10 @@ namespace IR
             int queryNumber = 1;
             while (true)
             {
-                Console.Write("Enter Query (enter EXIST to quit): ");
+                Console.Write("Enter Query (EXIT to exit): ");
                 string query = Console.ReadLine();
 
-                if (string.IsNullOrWhiteSpace(query) || query.ToUpper() == "EXIST")
+                if (string.IsNullOrWhiteSpace(query) || query.ToUpper() == "EXIT")
                 {
                     break;
                 }
