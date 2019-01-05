@@ -5,9 +5,9 @@ using System.Threading.Tasks;
 
 namespace IR
 {
-    class Program
+    internal class Program
     {
-        static void Main(string[] args)
+        private static void Main(string[] args)
         {
             Console.WriteLine($"init.. {DateTime.Now}");
 
@@ -27,7 +27,7 @@ namespace IR
 
             Task.WaitAll(tasks.ToArray());
 
-            Console.WriteLine($"Done Phase 1 - StopWords removal, please check generated files {DateTime.Now}");
+            Console.WriteLine($"Done Phase 1 - StopWords removal, please check generated files. ({DateTime.Now})");
 
             tasks = new List<Task>();
 
@@ -38,28 +38,40 @@ namespace IR
 
             Task.WaitAll(tasks.ToArray());
 
-            Console.WriteLine($"Done Phase 2 - Suffix removal, please check generated files {DateTime.Now}");
+            Console.WriteLine($"Done Phase 2 - Suffix removal, please check generated files. ({DateTime.Now})");
 
             InvertedModel model = new InvertedModel(terms, documents);
-            Console.WriteLine($"\tStart Generating Boolean Inverted File {DateTime.Now}");
+            Console.WriteLine($"\tStart Generating Boolean Inverted File. ({DateTime.Now})");
             model.GenerateInvertedFile();
-            Console.WriteLine($"\tDone Generating Boolean Inverted File {DateTime.Now}");
+            Console.WriteLine($"\tDone Generating Boolean Inverted File. ({DateTime.Now})");
             Console.WriteLine();
-            Console.WriteLine($"\tStart Generating TFIDF Inverted File {DateTime.Now}");
+            Console.WriteLine($"\tStart Generating TFIDF Inverted File. ({DateTime.Now})");
             model.GenerateTFIDFValuesFile();
-            Console.WriteLine($"\tDone Generating TFIDF Inverted File {DateTime.Now}");
+            Console.WriteLine($"\tDone Generating TFIDF Inverted File. ({DateTime.Now})");
+            Console.WriteLine();
+            Console.WriteLine($"Done Phase 3 - Generate Inverted File (Boolean & TFIDF), please check generated files. ({DateTime.Now})");
 
-            Console.WriteLine($"Done Phase 3 - Generate Inverted File (Boolean & TFIDF), please check generated files {DateTime.Now}");
+            int queryNumber = 1;
+            while (true)
+            {
+                Console.Write("Enter Query (enter EXIST to quit): ");
+                string query = Console.ReadLine();
 
-            Console.Write("Enter Query: ");
-            string query = Console.ReadLine();
+                if (string.IsNullOrWhiteSpace(query) || query.ToUpper() == "EXIST")
+                {
+                    break;
+                }
+                Console.WriteLine($"Working on it... ({DateTime.Now})");
+                Document queryDocument = new Document(terms, query);
+                Task.WaitAll(queryDocument.GenerateStpFileAsync(stopList));
+                Task.WaitAll(queryDocument.GenerateStemmedFileAsync());
 
-            Document queryDocument = new Document(terms, query);
-            Task.WaitAll(queryDocument.GenerateStpFileAsync(stopList));
-            Task.WaitAll(queryDocument.GenerateStemmedFileAsync());
+                model.SubmitQuery(queryDocument, query, queryNumber);
+                Console.WriteLine($"Done, check generated file. ({DateTime.Now})");
+                queryNumber++;
+            }
 
 
-            model.SubmitQuery(queryDocument, query);
         }
     }
 }

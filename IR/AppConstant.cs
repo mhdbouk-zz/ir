@@ -11,7 +11,7 @@
         public const string SfxDirectory = @"assets\sfx";
         public const string BooleanInvertedFile = @"assets\boolean-inverted-file.csv";
         public const string TFIDFInvertedFile = @"assets\tfidf-inverted-file.csv";
-        public const string QueryCosFile = @"assets\query-cos.csv";
+        public const string QueryCosFile = @"assets\query-{0}-cos.csv";
         public const string CsvDelimiter = ",";
 
         private static readonly string[] delimiters = new string[]{ "\r\n",".\r\n", ".\r", "\t", ";" , " & ",
