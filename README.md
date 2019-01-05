@@ -15,5 +15,5 @@ The remaining terms are stemmed using Porter's algorithm, it brings down distinc
 - Generate text documents without suffixes `.sfx`
 - Using porter algorithm (https://github.com/nemec/porter2-stemmer)
 
-## Phase 3: Boolean Inverted File
-Generating csv file that display all terms found in all documents (after phase 1 & 2) with 1 / 0 if the term exist in document or not
+## Phase 3: Inverted File
+Generate 2 CSV files that display all terms found in all documents (after phase 1 & 2) using boolean inverted file and TFIDF inverted file.

@@ -18,7 +18,7 @@ namespace IR
             _documents = documents;
         }
 
-        public void GenerateInvertedFIle()
+        public void GenerateInvertedFile()
         {
             _invertedValues = new List<InvertedValue>();
 

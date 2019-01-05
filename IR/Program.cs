@@ -27,7 +27,7 @@ namespace IR
 
             Task.WaitAll(tasks.ToArray());
 
-            Console.WriteLine($"Done Phase 1 - StopWords removal., please check files {DateTime.Now}");
+            Console.WriteLine($"Done Phase 1 - StopWords removal, please check generated files {DateTime.Now}");
 
             tasks = new List<Task>();
 
@@ -38,13 +38,13 @@ namespace IR
 
             Task.WaitAll(tasks.ToArray());
 
-            Console.WriteLine($"Done Phase 2 - Suffix removal., please check files {DateTime.Now}");
+            Console.WriteLine($"Done Phase 2 - Suffix removal, please check generated files {DateTime.Now}");
 
             BooleanModel booleanModel = new BooleanModel(terms, documents);
-            booleanModel.GenerateInvertedFIle();
+            booleanModel.GenerateInvertedFile();
             booleanModel.GenerateTFIDFValuesFile();
 
-            // 3. Computer using TFIDF
+            Console.WriteLine($"Done Phase 3 - Generate Inverted File (Boolean & TFIDF), please check generated files {DateTime.Now}");
         }
     }
 }
