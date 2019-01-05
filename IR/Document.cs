@@ -87,7 +87,7 @@ namespace IR
             // Add terms into DocumentTerms
             StemmedTerms.ForEach(x => _terms.Add(x));
 
-            await File.WriteAllLinesAsync($"{_sfxFile}", StemmedTerms.Distinct().ToArray());
+            await File.WriteAllLinesAsync($"{_sfxFile}", StemmedTerms.ToArray());
         }
 
         /// <summary>
