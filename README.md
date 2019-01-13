@@ -1,5 +1,5 @@
 # Information Retrieval Search Engine
-### Pilot Search Engine for CSCI512 Information Retrieval using the MED test collection
+### Pilot Information Retrieval Search Engine using the MED test collection
 
 ## Phase 1: Stoplist
 Adjectives, adverbs, and connectives are less
